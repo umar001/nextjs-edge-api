@@ -6,6 +6,13 @@ import returnResponse from "../../../../utils/returnResponse"
 
 export const config = {
     runtime: 'edge',
+    unstable_allowDynamic: [
+        '/lib/auth.js', // allows a single file
+        '/lib/jwtToken.js', // allows a single file
+        '/lib/prisma.js', // allows a single file
+        '/utils/returnResponse.js', // allows a single file
+        '/node_modules/function-bind/**', // use a glob to allow anything in the function-bind 3rd party module
+    ],
 }
 export default async (req) => {
     try {

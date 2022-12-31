@@ -16,6 +16,14 @@ const validator = initValidation(
 )
 export const config = {
     runtime: 'edge',
+    unstable_allowDynamic: [
+        '/lib/apiValidationHandler.js', // allows a single file
+        '/lib/jwtToken.js', // allows a single file
+        '/lib/prisma.js', // allows a single file
+        '/utils/returnResponse.js', // allows a single file
+        'utils/authHelper.js',
+        '/node_modules/function-bind/**', // use a glob to allow anything in the function-bind 3rd party module
+    ],
 }
 // define my middleware here and use it only for POST requests
 export default handler.use(post(validator)).use(checkAuth)
